@@ -1,0 +1,93 @@
+{% extends "sidebar.html" %}
+{% include "partials/toaster.html" %}
+{% block links%}
+    <link rel="stylesheet" href="{{ url_for( 'static' , filename = 'css/budget.css' ) }}">
+{% endblock links%}
+{% block main_content %}
+    <div class="top">
+        <div class="tabs">
+            <button class="tab-link active" onclick="openTab(event, 'monthly')">Monthly</button>
+            <button class="tab-link" onclick="openTab(event, 'weekly')">Weekly</button>
+            <button class="tab-link" onclick="openTab(event, 'daily')">Daily</button>
+        </div>
+
+        <div class="buttons-div">
+            <button>
+                Add Budget
+            </button>
+        </div>
+    </div>
+
+    <div id="monthly" class="tab-content active">
+        <!-- <p>Content for Monthly</p> -->
+           <div class="budget-card">
+            <div class="budget-title">University Food Budget</div>
+            <div class="budget-subtitle">University Food</div>
+            <div class="progress-container">
+            <div class="progress-bar" style="width: 70%"></div>
+            </div>
+            <div class="budget-details">7000 / 10000 (70%)</div>
+            <a href="#" class="edit-link">Edit</a>
+        </div>
+    </div>
+    <div id="weekly" class="tab-content">
+        <p>Content for Weekly</p>
+    </div>
+    <div id="daily" class="tab-content">
+        <p>Content for Daily</p>
+    </div>
+
+    <div class="add-budget-popup" id="add-budget-popup">
+            <div class="add-budget-div">
+
+                <div class="heading-div">
+                    <span class="heading">
+                        Add Budget
+                    </span>
+                    <button id="close-add-budget-button">
+                        <i class='bx bx-x'></i>
+                    </button>
+                </div>
+
+                <div class="budget-name-div">
+                    <label for="budget_name_input">Budget Name</label>
+                    <Input id="budget_name_input"></Input>
+                </div>
+                <div>
+                    <label for="">Budget Type</label>
+                    <select name="budget_type_dropdown" id="budget_type_dropdown">
+                        <option value="monthly">Monthly</option>
+                        <option value="weekly">Weekly</option>
+                        <option value="daily">Daily</option>
+                    </select>
+                </div>
+            
+                <div class="category-div" id="category-div">
+                    <label for="category_dropdown">Category</label>
+                    <select name="category_dropdown" id="category-dropdown">
+                        <option value="all">All</option>
+                    </select>
+                </div>
+
+                
+                <div class="amount-and-date-div">
+                    <div>
+                        <label for="amount_input">Amount</label>
+                        <input type="text" id="amount-input" name = "amount_input">
+                    </div>
+                </div>
+                
+
+                <div class="button-div">
+                    <button >
+                        Add Budget
+                    </button>
+                </div>
+            </div>
+            
+    </div>
+
+
+    <script src=" {{ url_for('static', filename = 'js/budget.js') }} ">    
+    </script>
+{% endblock main_content %}

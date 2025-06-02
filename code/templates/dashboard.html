@@ -1,0 +1,130 @@
+{% extends "sidebar.html" %}
+{% block links%}
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'css/dashboard.css')}}">
+{% endblock%}
+{% block main_content %}
+    <!-- <div class="dashboard-top">
+        <p>
+            Dashboard
+        </p>
+
+        <div class="top-right-div">
+            <i class='bx bxs-user-circle'></i>
+            <button>
+                Log out
+            </button>
+        </div>
+    </div> -->
+
+    <div class="spendings-div">
+        <div class="spendings-card">
+            <p class="heading">
+                Total Balance
+            </p>
+            <p class="number" id="balance">
+                $8,500
+            </p>
+        </div>
+        <div class="spendings-card">
+            <p class="heading">
+                Total Income
+            </p>
+            <p class="number" id="income">
+                $5,000
+            </p>
+        </div>
+        <div class="spendings-card">
+            <p class="heading">
+                Total Expense
+            </p>
+            <p class="number", id="expense">
+                $3,000
+            </p>
+        </div>
+    </div>
+
+    <div class="charts-div">
+        <div class="inner-chart">
+            <div>                
+                <button class="expand-button" id = "expand-pie-chart-button">
+                    <i class='bx bx-expand-alt'></i>
+                </button>
+            </div>
+
+            <img src="{{ url_for('static', filename = 'images/spendings-pie-chart.png') }}" alt="pie-chart">
+        </div>
+        <div class="inner-chart">
+            <div>                
+                <button class="expand-button" id = "expand-line-chart-button">
+                    <i class='bx bx-expand-alt'></i>
+                </button>
+            </div>
+            <img src="{{ url_for('static', filename = 'images/expense-plot.png') }}" alt="pie-chart">
+        </div>
+    </div>
+
+    <div class="table-div">
+        <div>
+            <p>
+                Recent Transactions
+            </p>
+        </div>
+        <div id="table-container">
+            Loading transactions
+        </div>
+    </div>
+
+    <div class="overlay"  id="overlay">
+        <div>
+            <button class="overlay-close-button" id="overlay-close-button">
+                &#10006
+            </button>
+            <img src="{{ url_for('static', filename = 'images/expense-plot.png') }}" alt="pie-chart">
+        </div>
+    </div>
+
+
+    <script>
+        const balancePTag = document.getElementById("balance");
+        const expensePTag = document.getElementById("expense");
+        const incomePTag = document.getElementById("income");
+        const expandPieChartButton = document.getElementById("expand-pie-chart-button");
+        const expandLineChartButton = document.getElementById("expand-line-chart-button");
+        const overlay = document.getElementById("overlay");
+        const overlayCloseButton = document.getElementById("overlay-close-button");
+        const overlayImage = document.querySelector(".overlay img")
+
+        async function update_financial_data() {
+            const response = await fetch("/api/get_user_financial_summary", {credentials : "include"});
+            const json_data = await response.json()
+            balancePTag.textContent = `Rs ${json_data.balance.toLocaleString("en-PK")}`
+            expensePTag.textContent = `Rs ${json_data.expense.toLocaleString("en-PK")}`;
+            incomePTag.textContent = `Rs ${json_data.income.toLocaleString("en-PK")}`;
+        
+        }
+
+        update_financial_data();
+
+        fetch(`/api/get_recent_transactions_table/${5}`, { credentials: "include" })
+            .then(res => res.text())
+            .then(tableHtml => {
+                // console.log(tableHtml)
+                document.getElementById("table-container").innerHTML = tableHtml;
+            });
+
+
+        expandPieChartButton.onclick = ()=>{
+            overlay.style.display = "flex";
+            overlayImage.src = "{{ url_for('static', filename = 'images/spendings-pie-chart.png') }}"
+        };
+
+        expandLineChartButton.onclick = ()=>{
+            overlay.style.display = "flex";
+            overlayImage.src = "{{ url_for('static', filename = 'images/expense-plot.png') }}"
+        };
+
+        overlayCloseButton.onclick = () => {
+            overlay.style.display = "none";
+        };
+    </script>
+{% endblock main_content %}

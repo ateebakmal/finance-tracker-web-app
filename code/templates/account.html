@@ -1,0 +1,217 @@
+{% extends "sidebar.html" %}
+{% include "partials/custom_alert.html" %}
+{% include "partials/toaster.html" %}
+{% block links %}
+    <link rel="stylesheet" href=" {{ url_for('static', filename = 'css/account.css') }} ">
+{% endblock links %}
+{% block main_content %}
+
+    <div class="top-buttons-div">
+        <button id="add-account-button">
+            Add Account
+        </button>
+        <button id="remove-account-button">
+            Remove Account
+        </button>
+    </div>
+
+    <div class="table-div">
+
+        <div class = "table-top">
+
+            <p class="nigga">Your Accounts</p>
+            <div class="plus-icon-div">
+                <button id="add-button">
+                    <i class='bx bx-plus'></i>
+                </button>
+                <p>Add Account</p>
+            </div>
+        
+        </div>
+        <div id="table-container">
+            Table Loading
+        </div>
+    </div>
+
+    <!-- This div is for dialogue box that will be displayed when
+         when user will click the add account button
+    -->
+    <div class="overlay", id = "overlay">
+
+        <div class="add-account-dialogue-box">
+            <div class="top">
+                <span>Add Account</span>
+                <button class="close-button" id="close-button">
+                    &#10006
+                </button>
+            </div>
+            <div class="bottom">
+                <p>
+                    Account Name
+                </p>
+                <input type="text" name="" id="account-input" placeholder="Apple Pay">
+                <button id="add-account">Add Account</button>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="remove-account-popup" id="remove-account-popup">
+
+        <div class="remove-account-div">
+            <div class="top">
+                <span>Remove Account</span>
+                <button class="close-button" id="close-button">
+                    &#10006
+                </button>
+            </div>
+            <div class="bottom">
+                <p>
+                    Account Name
+                </p>
+                <select name="" id="">
+                    <!-- Add options using js -->
+                </select>
+                <button id="remove-account">Remove Account</button>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        document.getElementById("top-text").textContent = "Accounts"
+        const addButton = document.getElementById("add-button");
+        const overlay = document.getElementById("overlay");
+        const addAccount = document.getElementById("add-account");
+        const closeButton = document.getElementById("close-button");
+        
+        async function addAccountOnClickFunction(){
+            console.log("We here");
+            accountInput = document.getElementById("account-input").value;
+
+            if(accountInput === ""){
+                showAlert("Invalid Input", "Account Input cannot be empty");
+                return
+            }
+            
+            console.log("We Here");
+            const response = await fetch("/api/add_acount_type",{
+                method : "POST",
+                headers : {
+                    "Content-Type" : "application/json"
+                },
+                body: JSON.stringify({account_type : accountInput})
+            });
+            const json_response = await response.json()
+            console.log(json_response)
+
+            if(json_response.success){
+                successToast(json_response.message);
+            }else{
+                errorToast(json_response.message);
+            }
+            // update accountss
+            updateAccountsTable();
+            overlay.style.display = "none";
+            
+        }
+
+        async function updateAccounts(){
+            // This function is used to update the options inside remove account
+            // popup
+
+            // get accounts from backend
+            console.log("updateAccountsCalled");
+            const response  = await fetch("api/get_user_accounts");
+            const json_response = await response.json()
+            
+            // extract accounts
+            const accounts = json_response.accounts;
+
+            // Get the select tag from remove-account-popup
+            const accountDropdown = document.querySelector(".remove-account-popup select");
+
+            accounts.forEach( (account)=>{
+                const option = document.createElement("option"); //Create option tag
+                option.value = account;
+                option.text = account;
+                accountDropdown.appendChild(option);
+            } );
+        }
+
+        async function removeUserAccount(accountTypeName){
+            const response = await fetch("/api/remove_user_account", {
+                method : "POST",
+                headers : {
+                    "Content-Type" : "application/json"
+                },
+                body: JSON.stringify({account_type_name : accountTypeName})                
+            });
+            const json_response = await response.json()
+
+            if(json_response.success){
+                successToast("Account removed");
+            }else{
+                errorToast("Some error occured");
+            }
+        }
+
+        async function updateAccountsTable() {
+            const response = await fetch("/api/get_user_accounts_table", {
+                method : "GET",
+                credentials : "include",
+            });
+
+            const tableHtml = await response.text()
+            document.getElementById("table-container").innerHTML = tableHtml;
+        }
+
+        
+
+        addButton.onclick = ()=>{
+            overlay.style.display = "flex";
+            document.getElementById("account-input").value = "";
+        };
+
+        // Add an onclick for add account button on top as well
+        document.querySelector(".top-buttons-div #add-account-button").onclick = ()=>{
+            overlay.style.display = "flex";
+            document.getElementById("account-input").value = "";
+        };
+        
+        addAccount.onclick = addAccountOnClickFunction;
+
+        closeButton.onclick = ()=>{
+            overlay.style.display = "none";
+        };
+
+
+        // Add an action listener for remove button
+        document.getElementById("remove-account-button").onclick = ()=>{
+            document.getElementById("remove-account-popup").style.display = "flex";
+        };
+
+        // Add an onclick for close button inside remove-account-popup
+        document.querySelector(".remove-account-popup .close-button").onclick = ()=>{
+            document.getElementById("remove-account-popup").style.display = "none";
+        };
+
+        // Add an onlick for remove button inside remove-account-popup
+        document.querySelector(".remove-account-popup #remove-account").onclick = ()=>{
+            // Get the account type selected
+            const accountDropdown = document.querySelector(".remove-account-popup select");
+            const accountTypeName = accountDropdown.value;
+            console.log(accountTypeName);
+            removeUserAccount(accountTypeName);
+            
+            // Hide the popup
+            document.getElementById("remove-account-popup").style.display = "none";
+            
+            // Update the table
+            updateAccountsTable();
+        };
+
+        updateAccounts();
+        updateAccountsTable();
+    </script>
+{% endblock main_content %}

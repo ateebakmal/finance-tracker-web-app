@@ -1,0 +1,191 @@
+.top{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.tabs {
+    display: flex;
+}
+
+/* .tabs button{
+    background-color: inherit;
+    border: none;
+    font-size: 17px;
+    font-weight: 400;
+} */
+.tab-link {
+    padding: 10px;
+    cursor: pointer;
+    background-color: #FAF9F6;
+    margin-right: 5px;
+    background-color: inherit;
+    border: none;
+    font-size: 17px;
+    font-weight: 400;
+    border-bottom: 3px solid #FAF9F6; 
+    transition: all 0.5s;
+}
+
+.tab-link.active {
+    /* background-color: #ddd; */
+    font-weight: 700;
+    border-bottom: 3px solid #0F2C3F;
+
+}
+
+
+.tab-content {
+    display: none;
+    padding: 10px;
+    border-top: 1px solid #ccc;
+    margin-top: 2px;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+.top .buttons-div button{
+    padding: 10px 15px;
+    font-size: medium;
+    border-radius: 8px;
+    color: white;
+    transition: all 0.5s;   
+    background-color: #0F2C3F;
+    border: none; 
+}
+/* Following styles are for budget cards */
+    .budget-card {
+      width: 250px;
+      padding: 16px;
+      border: 1px solid #ddd;
+      border-radius: 12px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+      margin: 12px;
+      font-family: Arial, sans-serif;
+    }
+
+    .budget-title {
+      font-weight: bold;
+      margin-bottom: 4px;
+    }
+
+    .budget-subtitle {
+      color: gray;
+      font-size: 14px;
+      margin-bottom: 8px;
+    }
+
+    .progress-container {
+      height: 8px;
+      background-color: #e4e4e7;
+      border-radius: 4px;
+      overflow: hidden;
+      margin-bottom: 8px;
+    }
+
+    .progress-bar {
+      height: 100%;
+      background-color: #22c55e; /* green */
+      width: 70%; /* Set dynamically */
+    }
+
+    .budget-details {
+      font-size: 14px;
+      margin-bottom: 4px;
+    }
+
+    .edit-link {
+      font-size: 13px;
+      color: #2563eb;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+
+
+.add-budget-popup {
+    display: none; /* hidden by default */
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0, 0, 0, 0.5); /* tinted background */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 99;
+}
+
+.add-budget-div{
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    gap: 20px;
+    max-width: 60%;
+    padding: 30px 30px;
+    border-radius: 16px;
+}
+
+.heading{
+    font-size: 30px;
+    font-weight: bolder;
+    color: #0F2C3F;
+}
+
+.heading-div{
+    position: relative;
+}
+
+#close-add-budget-button{
+    color: #0F2C3F;
+    background-color: inherit;
+    border: none;
+    font-size: larger;
+
+    position: absolute;
+    right: -8%;
+    top: -80%;
+
+    transition: opacity 0.5s;
+}
+
+#close-add-budget-button:hover{
+    opacity: 0.5;
+    cursor: pointer;
+}
+
+select,
+input{
+    border: 1px solid gray;
+    border-radius: 6px;
+    padding: 5px 8px;
+    width: 100%;
+    font-size: 15px;
+    overflow: ignore;
+    margin-top: 4px;
+}
+
+label{
+    font-size: 18px;
+}
+
+.button-div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.button-div > button{
+    background-color: #0F2C3F;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    font-size: 16px;
+    width: 100%;
+    border-radius: 12px;
+    transition: opacity 0.5s;
+}
+
+.button-div > button:hover{
+    cursor: pointer;
+    opacity: 0.5;
+}

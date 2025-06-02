@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+{% include "partials/custom_alert.html" %}
+{% include "partials/toaster.html" %}
+{% block links%}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/register.css') }}">
+{% endblock links%}
+
+{% block content%}
+    <p>
+        {{ get_flashed_messages(with_categories = true) }}
+    </p>
+    <div class = "content-div">
+        
+        <div class = "top-header-div common-properties">
+            <img class = "logo" src="{{ url_for('static', filename='images/logo.png') }}" alt="">
+            <p class = "company-text">Finance Tracker</p>
+        </div>
+        
+        <div class = "centre-div common-properties">
+            <div class="user-authentication-div">
+                <p>User Registeration</p>
+            </div>
+            
+            <div class = "email-and-password-div">
+                <div class = "email-icon-div">
+                    <!-- <p>img</p> -->
+                    <img src="{{ url_for('static', filename='images/email-icon.jpg') }}" alt="">
+                </div>
+                <div class = "email-text-div">
+                    <p>Email</p>
+                </div>
+                <div class="email-input-div">
+                    <input type="text" id = "email">
+                </div>
+                <div class="password-icon-div" >
+                    <img src="{{ url_for('static', filename='images/password-icon.png') }}" alt="">
+                </div>
+                <div class="password-text-div">
+                    <p>Password</p>
+                </div>
+                <div class="password-input-div">
+                    <input type="text" id = "password">
+                </div>
+                <div class="confirm-password-icon-div" >
+                    <img src="{{ url_for('static', filename='images/password-icon.png') }}" alt="">
+                </div>
+                <div class="confirm-password-text-div">
+                    <p>Confirm Password</p>
+                </div>
+                <div class="confirm-password-input-div">
+                    <input type="text" id = "confirm_password">
+                </div>
+                <div class="username-icon-div" >
+                    <img src="{{ url_for('static', filename='images/username-icon.png') }}" alt="">
+                </div>
+                <div class="username-text-div">
+                    <p>username</p>
+                </div>
+                <div class="username-input-div">
+                    <input type="text" id = "username-input">
+                </div>
+            </div>
+            
+            <div class = "sign-up-div">
+                <button class="sign-up-btn" id = "sign-up-button">
+                    SIGN UP
+                </button>
+            </div>
+            
+            <div class = "login-button-div">
+                <a href="{{ url_for('login') }}" class="login-button">
+                    Log In
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Include the external JavaScript file -->
+    <script src="{{ url_for('static', filename='js/signup.js') }}"></script>
+
+{% endblock content%}

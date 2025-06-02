@@ -1,0 +1,63 @@
+{% include "partials/custom_alert.html" %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+    <title>Document</title>
+</head>
+<body>
+    <div class = "content-div">
+        
+        <div class = "top-header-div common-properties">
+            <img class = "logo" src="{{ url_for('static', filename='images/logo.png') }}" alt="">
+            <p class = "company-text">Finance Tracker</p>
+        </div>
+    
+        <div class = "centre-div common-properties">
+            <div class="user-authentication-div">
+                <p>User Authentication</p>
+            </div>
+
+            <div class = "email-and-password-div">
+                <div class = "email-icon-div">
+                    <!-- <p>img</p> -->
+                    <img src = "{{ url_for('static', filename='images/email-icon.jpg') }}"  alt="">
+                </div>
+                <div class = "email-text-div">
+                    <p>Email</p>
+                </div>
+                <div class="email-input-div">
+                    <input type="text" id="email-input">
+                </div>
+                <div class="password-icon-div">
+                    <img src="{{ url_for('static', filename='images/password-icon.png') }}" alt="">
+                </div>
+                <div class="password-text-div">
+                    <p>Password</p>
+                </div>
+                <div class="password-input-div">
+                    <input type="text" id = "password-input">
+                </div>
+            </div>
+            
+           <div class = "sign-in-div">
+                <button class="sign-in-btn" id = "sign-in-btn">
+                    SIGN IN
+                </button>
+           </div>
+
+           <div class = "registration-button-div">
+            
+            <a href="{{ url_for('signup') }}" class="registration-button">
+                Sign Up
+            </a>
+
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename = 'js/login.js') }}"></script>
+</body>
+</html>

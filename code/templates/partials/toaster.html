@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- jQuery (MUST be first) -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- Toastr CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet"/>
+
+    <!-- Toastr JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+</head>
+<style>
+    .toast{
+        font-family: 'Poppins', sans-serif !important;;
+    }
+</style>
+<body>
+    
+</body>
+<script>
+    window.successToast = function(message){
+        toastr.success(message);
+    }
+
+    window.errorToast = function(message){
+        toastr.error(message)
+    }
+    
+</script>
+
+</html>

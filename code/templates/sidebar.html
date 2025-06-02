@@ -1,0 +1,88 @@
+<!-- templates/base.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/sidebar.css') }}">
+    {% block links %}
+    {% endblock %}
+</head>
+<body>
+    <div class="layout-wrapper-div">
+        
+        <div class="sidebar">
+            <div class="top">
+               <i class='bx bx-dollar-circle'></i>
+               <span class="bold">Finance</span>
+            </div>
+    
+            <ul>
+                <li class="{% if active == 'dashboard' %}active{% endif %}">
+                    <a href="{{ url_for('dashboard') }}">
+                        <i class='bx bxs-dashboard'></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li class="{% if active == 'transaction' %}active{% endif %}">
+                    <a href="{{ url_for('transaction') }}">
+                        <i class='bx bxs-book'></i>
+                        <span>Transactions</span>
+                    </a>
+                </li>
+                <li class="{% if active == 'account' %}active{% endif %}">
+                    <a href="{{ url_for('account') }}">
+                        <i class='bx bxs-user-account'></i>
+                        <span>Accounts</span>
+                    </a>
+                </li>
+                <li class="{% if active == 'budget' %}active{% endif %}">
+                    <a href="{{ url_for('budget') }}">
+                        <i class='bx bxs-wallet'></i>
+                        <span>Budget</span>
+                    </a>
+                </li>
+                <li class="{% if active == 'report' %}active{% endif %}">
+                    <a href="{{ url_for('report') }}">
+                        <i class='bx bxs-bar-chart-alt-2'></i>
+                        <span>Report</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ url_for('logout') }}">
+                        <i class='bx bx-log-out'></i>
+                        <span>Logout</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    
+        <div class="main-content">
+                <div class="dashboard-top">
+                    <p id = "top-text">
+                        Dashboard
+                    </p>
+
+                    <div class="top-right-div">
+                        <i class='bx bxs-user-circle'></i>
+                        <button id="log-out-button">
+                            Log out
+                        </button>
+                    </div>
+                </div>
+            {% block main_content %}
+            {% endblock %}
+        </div>
+
+    </div>
+
+    <script>
+        const logoutButton = document.getElementById("log-out-button");
+
+        logoutButton.onclick = ()=>{
+            window.location.href = "/logout";
+        };
+    </script>
+</body>
+</html>

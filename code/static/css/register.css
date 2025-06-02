@@ -1,0 +1,198 @@
+body{
+    background-color: #0F2C3F;
+}
+
+.content-div{
+    /* background-color: green; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 50px auto;
+    width: 600px;
+    border-radius: 12px;
+}
+
+.common-properties{
+    width: 600px;
+    margin-bottom: 20px;
+}
+
+.top-header-div{
+    /* background-color: lightblue; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo{
+    width: 100px;
+    height: 100px;
+    padding: 30px 30px;
+    object-fit: contain;
+    border-radius: 50%;
+}
+
+.company-text{
+    color: white;
+    font-weight: bold;
+    font-size: 25px;
+}
+.centre-div{
+    background-color: white;
+    padding: 20px 20px;
+    border-radius: 12px;
+
+}
+
+.user-authentication-div{
+    margin-top: 20px;
+    /* background-color: rgb(150, 150, 18); */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.user-authentication-div p{
+    font-size: 18px;
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+    margin: 0;
+    font-size: 25px;
+}
+
+.email-and-password-div{
+    margin: 20px 20px;
+    display: grid;
+    grid-template-columns: 30px 1fr;
+    grid-auto-rows: 20px 30px;
+    /* grid-template-rows: repeat(10, 20px 30px) ; */
+    column-gap: 20px;
+    row-gap: 5px;
+}
+
+.email-and-password-div p{
+    margin: 0;
+    height: 100%;
+}
+
+/* Code to edit inputs in all the centre divs */
+.email-and-password-div input{
+    height: 100%;
+    width: 100%;
+    border-radius: 2px;
+    border: solid gray 1px;
+    padding: 5px 10px;
+    box-sizing: border-box;
+}
+.email-icon-div {
+    grid-column: 1; /* Place in the first column */
+    grid-row: 2; /* Span 2 rows */
+}
+
+.email-icon-div img{
+    width: 100%;
+}
+.email-text-div {
+    grid-column: 2; /* Place in the second column */
+    grid-row: 1; /* First row */
+}
+
+.email-input-div {
+    grid-column: 2; /* Place in the second column */
+    grid-row: 2; /* Second row */
+}
+
+.password-icon-div {
+    grid-column: 1; /* Place in the second column */
+    grid-row: 4; /* Third row */
+}
+
+.password-icon-div img{
+    width: 100%;
+}
+
+.password-text-div {
+    grid-column: 2; /* Place in the second column */
+    grid-row: 3; /* Fourth row */
+}
+
+.password-input-div{
+    grid-column: 2;
+    grid-row: 4;
+}
+
+.confirm-password-icon-div{
+    grid-column:1;
+    grid-row: 6;
+}
+
+.confirm-password-icon-div img{
+    width: 100%;
+}
+
+.confirm-password-text-div{
+    grid-column: 2;
+    grid-row: 5;
+}
+
+.confirm-password-input-div{
+    grid-column: 2;
+    grid-row: 6;
+}
+
+.username-icon-div{
+    grid-column: 1;
+    grid-row: 8;
+}
+
+.username-icon-div img{
+    width: 100%;
+}
+.username-text-div{
+    grid-column: 2;
+    grid-row: 7;
+}
+
+.username-input-div{
+    grid-column: 2;
+    grid-row: 8;
+}
+.sign-up-div{
+    display: flex;
+    justify-content: center;
+}
+.sign-up-btn{
+    border: none;
+    color: white;
+    background-color: black;
+    width: 92%;
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.sign-up-btn:hover{
+    cursor: pointer;
+    opacity: 0.7;
+}
+.login-button-div{
+    /* background-color: lightcoral; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-button{
+    text-decoration: None;
+    display: block;
+    color: black;
+    background-color: white;
+    border: none;
+    height: 50px;
+    margin-top: 10px;
+}
+
+.registration-button:hover{
+    cursor: pointer;
+    opacity: 0.7;
+}

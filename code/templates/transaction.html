@@ -1,0 +1,249 @@
+{% extends "sidebar.html" %}
+{% include "partials/custom_alert.html" %}
+{% include "partials/toaster.html" %}
+{% block links %}
+    <link rel="stylesheet" href=" {{ url_for('static', filename='css/transaction.css') }}">
+        <!-- Include Flatpickr CSS and JS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+{% endblock links %}
+{% block main_content %}
+
+    <div class="top-buttons-div">
+        <button id="add-transaction-button">
+            Add Transaction
+        </button>
+        <button id="filter-button">
+            <i class='bx bx-filter'></i>
+            Filter
+        </button>
+    </div>
+
+    <div class="table-div" id="table-div">
+        <div class="table-heading-div">
+            <p>
+                Income and Expense
+            </p>
+        </div>
+        <p id="table-loading-text">
+            Table Loading...
+        </p>
+        <div id="income-and-expense-table">
+
+        </div>
+    </div>
+
+    <div class="table-div" id="table-div">
+        <div class="table-heading-div">
+            <p>
+                Transfers
+            </p>
+        </div>
+        <p id="table-loading-text">
+            Table Loading...
+        </p>
+        <div id="transfer-table">
+
+        </div>
+    </div>
+    
+
+    <div class="overlay" id="overlay">
+        <div class="filter-div" id="filter-div">
+            <button id="close-filter-button">
+                <i class='bx bx-x'></i>
+            </button>
+            <!-- <p class="top-text">
+                Filter Transactions
+            </p> -->
+            <span class="top-text">
+                Filter Transactions
+            </span>
+
+            <div class="filter-type-div">
+                <label for="filter-type-dropdown">Filter:</label>
+                <select id="filter-type-dropdown" name="filter_type" class="dropdown">
+                    <option value="income_and_expense">Income and Expense</option>
+                    <option value="transfer">Transfer</option>
+                    <!-- Add Options here from javascript -->
+                </select>
+            </div>
+
+            <div class="date-div">
+                <label for="date">Date Range</label>
+                <div>
+                    <input type="text" id="startDateField" placeholder="From" class="date" name="start_date">
+                    <input type="text" id="endDateField" placeholder="To" class="date" name="end_date">
+                </div>
+            </div>
+
+            <div class="category-div" id="category-div">
+                <label for="category-dropdown">Category:</label>
+                <select id="category-dropdown" name="category" class="dropdown">
+                    <option value="all">All</option>
+                    <!-- Add Options here from javascript -->
+                </select>
+            </div>
+
+            <div class= "accounts-div">
+                <label for="account_dropdown">Account:</label>
+                <select id="account_dropdown" name="account" class="dropdown account-dropdown">
+                    <option value="all">All</option>
+                    <!-- Add Options here from javascript -->
+                </select>
+            </div>
+
+            <div class="transfer-div" id="transfer-div">
+                    <div>
+                        <label for="from-dropdown">From</label>
+                        <select name="from_dropdown" id="from-dropdown" class="account-dropdown">
+                            <!-- <option value="">option</option> -->
+                        </select>
+                    </div>
+                    <div>
+                        <label for="to-dropdown">To</label>
+                        <select name="to_dropdown" id="to-dropdown" class="account-dropdown">
+                            <!-- <option value="">option</option> -->
+                        </select>
+                    </div>
+            </div>
+
+            <div class="amounts-div">
+                <div>
+                    <label for="amount-input">Minimum Amount</label>
+                    <input type="text" name="minimum_amount" class="amount-input" id="min_amount_input">
+                </div>
+                <div>
+                    <label for="maximum-amount">Maximum Amount</label>
+                    <input type="text" name="maximum_amount" class="amount-input" id="max_amount_input">
+                </div>
+
+            </div>
+
+            <div class="buttons-div">
+
+                <button id="apply-filter-button">
+                    Apply Filter
+                </button>
+                <button id="reset-button">
+                    Reset
+                </button>
+            
+            </div>
+
+
+
+        </div>
+    </div>
+
+
+    <!-- Following code is for add-transaction overlay -->
+    <div class="add-transaction-popup" id="add-transaction-popup">
+            <div class="add-transaction-div">
+
+                <div class="heading-div">
+                    <span class="heading">
+                        Add Transaction
+                    </span>
+                    <button id="close-add-transaction-button">
+                        <i class='bx bx-x'></i>
+                    </button>
+                </div>
+
+                <div class="transaction-name">
+                    <label for="">Transaction Name</label>
+                    <input type="text" id="transaction-name-input" name = "transaction_name">
+                </div>
+
+                <div class="transaction-type-div">
+                    <label for="">Transaction Type</label>
+                    <select name="transaction_type" id="transaction-type-dropdown">
+                        <option value="expense">Expense</option>
+                        <option value="income">Income</option>
+                        <option value="transfer">Transfer</option>
+                    </select>
+                </div>
+                
+                <div class="accounts-div">
+                    <label for="account-type-dropdown">Account</label>
+                    <select name="account_type" id="account-type-dropdown" class="account-dropdown">
+                        <!-- Add options here using javascript -->
+                    </select>
+                </div>
+
+                <div class="category-div" id="category-div">
+                    <div>
+                        <label for="">Category</label>
+                        <button id="add-category-button">
+                            <i class='bx bx-plus'></i>
+                        </button>
+
+                        <span class="tooltip">Add Category</span>
+                    </div>
+                    <select name="category_dropdown" id="category-dropdown">
+                        <!-- <option value="option">option</option> -->
+                    </select>
+                </div>
+
+                <div class="transfer-div" id="transfer-div">
+                    <div>
+                        <label for="from-dropdown">From</label>
+                        <select name="from_dropdown" id="from-dropdown" class="account-dropdown">
+                            <!-- <option value="">option</option> -->
+                        </select>
+                    </div>
+                    <div>
+                        <label for="to-dropdown">To</label>
+                        <select name="to_dropdown" id="to-dropdown" class="account-dropdown">
+                            <!-- <option value="">option</option> -->
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="amount-and-date-div">
+                    <div>
+                        <label for="">Amount</label>
+                        <input type="text" id="amount-input" name = "amount_input">
+                    </div>
+                    <div>
+                        <label for="">Date</label>
+                        <input type="text" id="dateField"  class="date" name="transaction_date">
+                    </div>
+                </div>
+
+
+                <div class="button-div">
+                    <button >
+                        Add Transaction
+                    </button>
+                </div>
+            </div>
+            
+    </div>
+
+    <!-- This div is for dialogue box that will be displayed when
+    when user will click the add category button
+    -->
+        <div class="add-category-popup", id = "add-category-popup">
+
+            <div class="add-category-popup-div" id="add-category-popup-div">
+                <div class="top">
+                    <span>Add Category</span>
+                    <button class="close-button" id="close-button">
+                        &#10006
+                    </button>
+                </div>
+                <div class="bottom">
+                    <p>
+                        Category Name
+                    </p>
+                    <input type="text" name="" id="account-input" placeholder="Shopping">
+                    <button id = "fuck">Add Category</button>
+                </div>
+            </div>
+
+        </div>
+
+    <script src=" {{url_for('static',filename = 'js/transaction.js')}} ">
+    </script>
+{% endblock main_content %}

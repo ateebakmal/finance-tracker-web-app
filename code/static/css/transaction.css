@@ -1,0 +1,428 @@
+.top-buttons-div{
+    /* background-color: pink; */
+    display: flex;
+    gap: 30px;
+}
+
+.top-buttons-div > button{
+    padding: 10px 15px;
+    font-size: medium;
+    border-radius: 12px;
+    color: white;
+    transition: all 0.5s;
+}
+
+#add-transaction-button{
+    background-color: #0F2C3F;
+    border: none;
+}
+
+#filter-button{
+    border: 1px solid #0F2C3F;
+    color: #0F2C3F;
+    background-color: white;
+}
+
+.top-buttons-div > button:hover{
+    cursor: pointer;
+    opacity: 0.5;
+}
+
+.table-div{
+    background-color: #ffffff;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    border-radius: 12px;
+    padding: 10px 20px;
+
+}
+
+.table-div p{
+    font-size: large;
+    font-weight: bold;
+    color: #0F2C3F;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #ffffff;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    border-radius: 12px;
+    overflow: hidden;
+    margin-top: 20px;
+}
+
+table th,
+table td {
+    padding: 12px 16px;
+    text-align: left;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+table thead {
+    background-color: #0F2C3F;
+    color: #ffffff;
+}
+
+table tbody tr:nth-child(even) {
+    background-color: #f1f1f1;
+}
+
+table tbody tr:hover {
+    background-color: #e6f7f1;
+    cursor: pointer;
+}
+
+.overlay {
+    display: none; /* hidden by default */
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0, 0, 0, 0.5); /* tinted background */
+    /* display: flex; */
+    align-items: center;
+    justify-content: center;
+    z-index: 99;
+}
+
+.filter-div{
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+    padding: 30px 30px;
+    border-radius: 20px;
+    position: relative;
+}
+
+#close-filter-button{
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    font-size: large;
+    background-color: inherit;
+    border: none;
+}
+
+#close-filter-button:hover{
+    opacity: 0.5;
+    cursor: pointer;
+}
+
+label{
+    display: inline-block;
+    margin-bottom: 5px;
+}
+.top-text{
+    font-size: 30px;
+    font-weight: bold;
+    color: #0F2C3F;
+    margin-top: none;
+}
+
+.date-div,.categories-div, .amounts-div{
+    font-size: medium;
+}
+
+.date-div > div{
+    display: flex;
+    justify-content: space-between;
+}
+.date, .amount-input{
+    width: 140px;
+    border: 1px solid rgb(171, 163, 163);
+    padding: 5px 5px;
+    border-radius: 6px;
+}
+
+
+.dropdown{
+    width: 100%;
+    border: 1px solid rgb(171, 163, 163);
+    padding: 5px 5px;
+    border-radius: 6px;
+}
+
+
+.amounts-div{
+    display: flex;
+    gap: 20px;
+}
+.amounts-div > div{
+    display: flex;
+    flex-direction: column;
+}
+
+.buttons-div > button{
+    font-size: medium;
+    margin-right: 20px;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    transition: opacity 0.5s;
+}
+
+#apply-filter-button{
+    background-color: #0F2C3F;
+    color: white;
+}
+
+
+#reset-button{
+    background-color: white;
+    color: #0F2C3F;
+    border: 1px solid #0F2C3F;
+}
+
+#apply-filter-button:hover , #reset-button:hover{
+    cursor: pointer;
+    opacity: 0.5;
+}
+
+
+/* Following code is for properties of  add-transaction-popup*/
+.add-transaction-popup {
+    display: none; /* hidden by default */
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0, 0, 0, 0.5); /* tinted background */
+    /* display: flex; */
+    align-items: center;
+    justify-content: center;
+    z-index: 99;
+}
+
+.add-transaction-div{
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    gap: 20px;
+    max-width: 60%;
+    padding: 30px 30px;
+    border-radius: 16px;
+}
+
+.heading{
+    font-size: 30px;
+    font-weight: bolder;
+    color: #0F2C3F;
+}
+
+.heading-div{
+    position: relative;
+}
+
+#close-add-transaction-button{
+    color: #0F2C3F;
+    background-color: inherit;
+    border: none;
+    font-size: larger;
+
+    position: absolute;
+    right: -6%;
+    top: -85%;
+
+    transition: opacity 0.5s;
+}
+
+#close-add-transaction-button:hover{
+    opacity: 0.5;
+    cursor: pointer;
+}
+
+.add-transaction-div  label{
+    display: block;
+    font-size: large;
+    margin-bottom: 5px;
+}
+
+
+
+/* .add-transaction-div select,
+.add-transaction-div  input{
+    border: 1px solid gray;
+    border-radius: 6px;
+    padding: 5px 8px;
+    width: 100%;
+    font-size: 15px;
+    overflow: ignore;
+} */
+
+select,
+input{
+    border: 1px solid gray;
+    border-radius: 6px;
+    padding: 5px 8px;
+    width: 100%;
+    font-size: 15px;
+    overflow: ignore;
+}
+.category-div{
+    /* display: none;  */
+    /*When user selects transaction type = transfer */
+}
+
+
+.category-div > div{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+}
+
+#add-category-button{
+    background-color: inherit;
+    border: none;
+    font-size: larger;
+    transition: all 0.5s;
+}
+
+#add-category-button:hover{
+    opacity: 0.5;
+    cursor: pointer;
+}
+
+
+.tooltip{
+    position: absolute;
+    right: -35%;
+    background-color: #0F2C3F;
+    color: white;
+    padding: 5px 8px;
+    border-radius: 6px;
+    opacity: 0;
+    transition: opacity 1s;
+}
+
+#add-category-button:hover + .tooltip{
+    opacity: 1;
+}
+
+.transfer-div{
+    display: none; /*Default*/
+    /* display: flex; */
+    justify-content: space-between;
+    gap: 30px;
+}
+
+.transfer-div > div{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+
+
+.amount-and-date-div{
+    display: flex;
+    gap: 40px;
+    justify-content: space-between;
+}
+
+.amount-and-date-div > div {
+    width: 100%;
+}
+
+.button-div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.button-div > button{
+    background-color: #0F2C3F;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    font-size: 16px;
+    width: 100%;
+    border-radius: 12px;
+    transition: opacity 0.5s;
+}
+
+.button-div > button:hover{
+    cursor: pointer;
+    opacity: 0.5;
+}
+
+/* Following code is for styling add-category-popup */
+.add-category-popup {
+    display: none; /* hidden by default */
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0, 0, 0, 0.5); /* tinted background */
+    /* display: flex; */
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+}
+
+.add-category-popup-div{
+    background-color: #0F2C3F;
+    color: #e0e0e0;
+    width: 300px;
+    padding: 30px 30px;
+    border-radius: 5%;
+}
+.add-category-popup-div .top{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: larger;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.add-category-popup-div .top .close-button{
+    position: inherit;
+    left: 70px;
+    top: -26px;
+    background-color: inherit;
+    border: none;
+    color: white;
+    transition: opacity 0.1s ;
+}
+
+.add-category-popup-div .top .close-button:hover{
+    opacity: 0.5;
+    cursor: pointer;
+}
+
+.add-category-popup-div .bottom p{
+    margin-bottom: 5px;
+}
+.add-category-popup-div .bottom{
+    display: flex;
+    flex-direction: column;
+}
+
+.add-category-popup-div .bottom input{
+    border: none;
+    padding: 5px 5px;
+    border-radius: 5px;
+    height: 40px;
+    transition: all 0.5ms;
+}
+
+.add-category-popup-div .bottom input:focus{
+    border: 2px solid #96D1B3;
+    /* box-shadow: 0 0 5px rgba(150, 209, 179, 0.6);  */
+    outline: none;
+
+}
+
+
+.add-category-popup-div .bottom button{
+    background-color: #96D1B3;
+    color: white;
+    border: none;
+    padding: 5px;
+    font-size: medium;
+    margin-top: 10px;
+    border-radius: 5px;
+    /* border-radius: 15px 15px 15px 15px; */
+}
+
+.add-category-popup-div .bottom button:hover{
+    cursor: pointer;
+    background-color: #1ce87f;
+}

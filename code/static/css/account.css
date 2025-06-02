@@ -1,0 +1,230 @@
+.top-buttons-div{
+    /* background-color: pink; */
+    display: flex;
+    gap: 30px;
+}
+
+.top-buttons-div > button{
+    padding: 10px 15px;
+    font-size: medium;
+    border-radius: 12px;
+    color: white;
+    transition: all 0.5s;
+}
+
+#add-account-button{
+    background-color: #0F2C3F;
+    border: none;
+}
+
+#remove-account-button{
+    border: 1px solid #0F2C3F;
+    color: #0F2C3F;
+    background-color: white;
+}
+
+.top-buttons-div > button:hover{
+    cursor: pointer;
+    opacity: 0.5;
+}
+
+.table-top{
+    /* background-color: aqua; */
+    display: flex;
+    justify-content: space-between;
+}
+
+.plus-icon-div{
+    position: relative;
+}
+
+.plus-icon-div button{
+    border: None;
+    background-color: white;
+}
+.plus-icon-div i{
+    font-size: larger;
+
+}
+
+.plus-icon-div p{
+    position: absolute;
+    white-space: nowrap;
+    bottom: 150%;
+    right: 10%;
+    color: #e0e0e0 !important;
+    background-color: #0F2C3F;
+    font-size: 1em !important;
+    padding: 5px 8px;
+    border-radius: 5%;
+    border: none;
+    opacity: 0;
+    transition: all 0.5s ease-out;
+}
+
+.plus-icon-div button:hover{
+    cursor: pointer;
+}
+
+.plus-icon-div button:hover+p{
+    opacity: 1;
+}
+
+.table-div{
+    background-color: #ffffff;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    border-radius: 12px;
+    padding: 10px 20px;
+
+}
+
+.table-div p{
+    font-size: large;
+    font-weight: bold;
+    color: #0F2C3F;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #ffffff;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    border-radius: 12px;
+    overflow: hidden;
+    margin-top: 20px;
+}
+
+table th,
+table td {
+    padding: 12px 16px;
+    text-align: left;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+table thead {
+    background-color: #0F2C3F;
+    color: #ffffff;
+}
+
+table tbody tr:nth-child(even) {
+    background-color: #f1f1f1;
+}
+
+table tbody tr:hover {
+    background-color: #e6f7f1;
+    cursor: pointer;
+}
+
+/* Following code is for styling add-account-dialogue-box */
+.overlay {
+    display: none; /* hidden by default */
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0, 0, 0, 0.5); /* tinted background */
+    /* display: flex; */
+    align-items: center;
+    justify-content: center;
+    z-index: 99;
+}
+
+.add-account-dialogue-box,
+.remove-account-div{
+    background-color: #0F2C3F;
+    color: #e0e0e0;
+    width: 300px;
+    padding: 30px 30px;
+    border-radius: 5%;
+}
+.add-account-dialogue-box .top,
+.remove-account-div .top{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: larger;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.add-account-dialogue-box .top .close-button{
+    position: inherit;
+    left: 70px;
+    top: -26px;
+    background-color: inherit;
+    border: none;
+    color: white;
+    transition: opacity 0.1s ;
+}
+
+.add-account-dialogue-box .top .close-button:hover,
+.remove-account-div .top .close-button:hover{
+    opacity: 0.5;
+    cursor: pointer;
+}
+
+.add-account-dialogue-box .bottom p,
+.remove-account-div .bottom p{
+    margin-bottom: 5px;
+}
+.add-account-dialogue-box .bottom,
+.remove-account-div .bottom{
+    display: flex;
+    flex-direction: column;
+}
+
+.add-account-dialogue-box .bottom input,
+.remove-account-div .bottom select{
+    border: none;
+    padding: 5px 5px;
+    border-radius: 5px;
+    height: 40px;
+    transition: all 0.5ms;
+}
+
+.add-account-dialogue-box .bottom input:focus{
+    border: 2px solid #96D1B3;
+    /* box-shadow: 0 0 5px rgba(150, 209, 179, 0.6);  */
+    outline: none;
+
+}
+
+
+.add-account-dialogue-box .bottom button,
+.remove-account-div .bottom button{
+    background-color: #96D1B3;
+    color: white;
+    border: none;
+    padding: 5px;
+    font-size: medium;
+    margin-top: 10px;
+    border-radius: 5px;
+    /* border-radius: 15px 15px 15px 15px; */
+}
+
+.add-account-dialogue-box .bottom button:hover,
+.remove-account-div .bottom button:hover{
+    cursor: pointer;
+    background-color: #1ce87f;
+}
+
+
+.remove-account-popup {
+    display: none; /* hidden by default */
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0, 0, 0, 0.5); /* tinted background */
+    /* display: flex; */
+    align-items: center;
+    justify-content: center;
+    z-index: 99;
+}
+
+.remove-account-div .top .close-button{
+    position: inherit;
+    /* left: 70px; */
+    right: -60px;
+    top: -30px;
+    background-color: inherit;
+    border: none;
+    color: white;
+    transition: opacity 0.5s ;
+}
