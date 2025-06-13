@@ -1,6 +1,6 @@
 # 💸 Finance Tracker Web App
 
-A modern, full-stack **Personal Finance Tracker** that helps users **track expenses**, **manage budgets**, and **analyze financial health** with ease — built using **MongoDB**, **Flask**, and a responsive **JavaScript + HTML/CSS** frontend.
+A modern, full-stack **Personal Finance Tracker** that helps users **track expenses**, **manage budgets**, and **analyze financial health** with ease — built using , **Flask**, and **JavaScript + HTML/CSS** frontend.
 
 ---
 
